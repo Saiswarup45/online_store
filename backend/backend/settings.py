@@ -28,11 +28,12 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
 
+# Configure cloudinary for API uploads (secure HTTPS)
 cloudinary.config(
-    **CLOUDINARY_STORAGE,
-    secure=True,  # Force HTTPS
-    cdn_subdomain=True,
-    private_cdn=False
+    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.getenv('CLOUDINARY_API_KEY'),
+    api_secret=os.getenv('CLOUDINARY_API_SECRET'),
+    secure=True
 )
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

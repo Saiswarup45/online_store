@@ -1,5 +1,4 @@
 from django.db import models
-from cloudinary.models import CloudinaryField
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
@@ -13,7 +12,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.FloatField()
     description = models.TextField()
-    image = CloudinaryField('image', blank=True, null=True)
+    image = models.URLField(blank=True, null=True)  # Stores Cloudinary HTTPS URL
 
     def __str__(self):
         return self.name
