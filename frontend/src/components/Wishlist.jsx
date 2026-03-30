@@ -34,7 +34,7 @@ function Wishlist() {
                         : `${(import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api").replace(/\/+$/, "").replace(/\/api$/, "")}${item.image}`
                       : "https://via.placeholder.com/300"
                   }
-                  className="h-40 w-full object-cover rounded"
+                  className="h-40 w-full object-contain rounded"
                 />
 
                 <h3 className="mt-2 font-semibold">

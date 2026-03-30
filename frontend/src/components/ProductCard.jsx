@@ -37,7 +37,7 @@ function ProductCard({ product }) {
         <img
           src={imageSrc}
           alt={product.name}
-          className="h-48 w-full object-cover"
+          className="h-48 w-full object-contain"
         />
       </div>
 
