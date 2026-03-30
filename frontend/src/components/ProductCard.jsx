@@ -6,10 +6,17 @@ function ProductCard({ product }) {
 
   const isWishlisted = wishlist.find((item) => item.id === product.id);
 
+  // Debug: Log image URL
+  if (product.image) {
+    console.log(`Product "${product.name}" image:`, product.image);
+  }
+
   const imageSrc = product.image
     ? product.image.startsWith("http")
-      ? product.image
-      : `${API_BASE.replace(/\/api$/, "")}${product.image}`
+      ? product.image  // Use Cloudinary or full URLs directly
+      : product.image.startsWith("/")
+      ? `${API_BASE.replace(/\/api$/, "")}${product.image}`  // Prepend domain if relative path
+      : `https://res.cloudinary.com/${product.image}`  // Fallback for Cloudinary public URLs
     : "https://via.placeholder.com/300";
 
   return (
