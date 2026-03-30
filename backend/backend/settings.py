@@ -10,11 +10,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # 🔐 SECURITY
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-dev-key')
-DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+DEBUG = False
+# DEBUG = True
+ALLOWED_HOSTS = ['*']
 
 # CORS
-CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000').split(',')
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Security for production
 if not DEBUG:
