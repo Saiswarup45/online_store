@@ -28,7 +28,12 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
 
-cloudinary.config(**CLOUDINARY_STORAGE)
+cloudinary.config(
+    **CLOUDINARY_STORAGE,
+    secure=True,  # Force HTTPS
+    cdn_subdomain=True,
+    private_cdn=False
+)
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
