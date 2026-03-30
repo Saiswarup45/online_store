@@ -36,7 +36,12 @@ cloudinary.config(
     secure=True
 )
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# Remove cloudinary_storage - we handle uploads manually in views
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Media files configuration
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 📦 INSTALLED APPS
 INSTALLED_APPS = [
