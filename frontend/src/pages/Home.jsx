@@ -1,23 +1,44 @@
 import { useState } from "react";
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import CategoryTabs from "../components/CategoryTabs";
 import Filters from "../components/Filters";
 import ProductList from "../components/ProductList";
 import Footer from "../components/Footer";
 
-function Home() {
-  const [search, setSearch] = useState("");
+function Home({ search }) {
   const [category, setCategory] = useState("All");
   const [price, setPrice] = useState("");
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      <Navbar setSearch={setSearch} />
+
+      {/* HERO */}
       <Hero />
-      <CategoryTabs setCategory={setCategory} />
-      <Filters setPrice={setPrice} />
-      <ProductList search={search} category={category} price={price} />
+
+      
+      <div className="max-w-7xl mx-auto px-4 mt-4">
+        <CategoryTabs setCategory={setCategory} />
+      </div>
+
+      
+      <div className="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+
+        {/* FILTER SIDEBAR */}
+        <div className="md:col-span-1 bg-white p-4 rounded-xl shadow h-fit">
+          <Filters setPrice={setPrice} />
+        </div>
+
+        {/* PRODUCTS */}
+        <div className="md:col-span-3">
+          <ProductList
+            search={search}
+            category={category}
+            price={price}
+          />
+        </div>
+
+      </div>
+
       <Footer />
     </div>
   );
