@@ -2,8 +2,15 @@ import { useStore } from "../context/StoreContext";
 
 function ProductCard({ product }) {
   const { addToCart, toggleWishlist, wishlist } = useStore();
+  const API_BASE = (import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api").replace(/\/+$/, "");
 
   const isWishlisted = wishlist.find((item) => item.id === product.id);
+
+  const imageSrc = product.image
+    ? product.image.startsWith("http")
+      ? product.image
+      : `${API_BASE.replace(/\/api$/, "")}${product.image}`
+    : "https://via.placeholder.com/300";
 
   return (
     <div className="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
@@ -21,11 +28,7 @@ function ProductCard({ product }) {
 
         {/* IMAGE FIX */}
         <img
-          src={
-            product.image
-              ? `http://127.0.0.1:8000${product.image}`
-              : "https://via.placeholder.com/300"
-          }
+          src={imageSrc}
           alt={product.name}
           className="h-48 w-full object-cover"
         />

@@ -52,7 +52,7 @@ function Cart() {
                     className="flex gap-4 bg-white p-4 rounded-xl shadow"
                   >
                     <img
-                      src={`http://127.0.0.1:8000${item.image}`}
+                      src={`${item.image}`}
                       className="w-24 h-24 object-cover rounded"
                     />
 

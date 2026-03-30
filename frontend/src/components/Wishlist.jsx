@@ -27,7 +27,13 @@ function Wishlist() {
                 className="bg-white rounded-xl shadow p-4"
               >
                 <img
-                  src={`http://127.0.0.1:8000${item.image}`}
+                  src={
+                    item.image
+                      ? item.image.startsWith("http")
+                        ? item.image
+                        : `${(import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api").replace(/\/+$/, "").replace(/\/api$/, "")}${item.image}`
+                      : "https://via.placeholder.com/300"
+                  }
                   className="h-40 w-full object-cover rounded"
                 />
 

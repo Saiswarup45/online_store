@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { getProducts } from "../api/productApi";
 import ProductCard from "./ProductCard";
 
 function ProductList({ search, category, price }) {
@@ -9,9 +9,8 @@ function ProductList({ search, category, price }) {
   const itemsPerPage = 4; 
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/products/")
-      .then((res) => setProducts(res.data))
+    getProducts()
+      .then((data) => setProducts(data))
       .catch((err) => console.error(err));
   }, []);
 
