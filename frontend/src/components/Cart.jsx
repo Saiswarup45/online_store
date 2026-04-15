@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import { useStore } from "../context/StoreContext";
 import { useState } from "react";
+
 
 function Cart() {
   const { cart } = useStore();
@@ -99,14 +101,14 @@ function Cart() {
                 <span>{cart.length}</span>
               </div>
 
-              <div className="flex justify-between font-bold text-lg">
+              <div className="flex justify-between font-bold mb-5 text-lg">
                 <span>Total Price</span>
                 <span>₹{getTotal()}</span>
               </div>
 
-              <button className="mt-4 w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800">
+              <Link to="/checkout" className="mt-4 w-full bg-black text-white p-4  rounded-lg hover:bg-gray-800">
                 Checkout
-              </button>
+              </Link>
             </div>
 
           </div>

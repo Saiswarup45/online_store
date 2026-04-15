@@ -10,6 +10,10 @@ export const StoreProvider = ({ children }) => {
     setCart((prev) => [...prev, product]);
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   const toggleWishlist = (product) => {
     setWishlist((prev) => {
       const exists = prev.find((item) => item.id === product.id);
@@ -22,7 +26,7 @@ export const StoreProvider = ({ children }) => {
 
   return (
     <StoreContext.Provider
-      value={{ cart, addToCart, wishlist, toggleWishlist }}
+      value={{ cart, addToCart, clearCart, wishlist, toggleWishlist }}
     >
       {children}
     </StoreContext.Provider>
